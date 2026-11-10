@@ -1,0 +1,1237 @@
+_format_version: "3.0"
+_transform: true
+
+########################################################
+# SERVICES
+########################################################
+
+services:
+  - name: partialmapapi-1-0-0
+    host: postman-echo.com
+    port: 443
+    protocol: https
+    retries: 5
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    enabled: true
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+    path: /
+    routes:
+      - name: banksuiteproduct-1-0-0--partialmapapi--getip
+        protocols:
+          - http
+          - https
+        methods:
+          - GET
+        paths:
+          - /suite/ip
+        strip_path: false
+        preserve_host: false
+        https_redirect_status_code: 426
+        regex_priority: 0
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
+        tags:
+          - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+          - migrated-by:forgeshift-wso2-migrator
+          - wso2-api-product:BankSuiteProduct
+          - wso2-member-api:e2bc7f53-c332-407a-8f81-c545f81c9832
+          - wso2-resource:_ip
+          - wso2-verb:GET
+          - proxyx-proxy-id:PX-9ED22B40FF8E
+      - name: partialmapapi-1-0-0--getip
+        protocols:
+          - http
+          - https
+        methods:
+          - GET
+          - OPTIONS
+        paths:
+          - /partial/1.0.0/ip
+        strip_path: false
+        preserve_host: false
+        https_redirect_status_code: 426
+        regex_priority: 0
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
+        tags:
+          - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+          - migrated-by:forgeshift-wso2-migrator
+          - wso2-resource:_ip
+          - wso2-verb:GET
+          - proxyx-proxy-id:PX-9ED22B40FF8E
+      - name: partialmapapi-1-0-0--getget
+        protocols:
+          - http
+          - https
+        methods:
+          - GET
+          - OPTIONS
+        paths:
+          - /partial/1.0.0/get
+        strip_path: false
+        preserve_host: false
+        https_redirect_status_code: 426
+        regex_priority: 0
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
+        tags:
+          - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+          - migrated-by:forgeshift-wso2-migrator
+          - wso2-resource:_get
+          - wso2-verb:GET
+          - proxyx-proxy-id:PX-9ED22B40FF8E
+
+########################################################
+# PLUGINS
+########################################################
+
+plugins:
+  - name: proxy-cache
+    service: partialmapapi-1-0-0
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      cache_by_principal: false
+      cache_control: false
+      cache_ttl: 300
+      content_type:
+        - "*/*"
+        - "*/*; charset=utf-8"
+        - "*/*; charset=UTF-8"
+        - "*/*; charset=iso-8859-1"
+        - "*/*; charset=ISO-8859-1"
+      ignore_uri_case: false
+      memory:
+        dictionary_name: kong_db_cache
+      request_method:
+        - GET
+      response_code:
+        - 200
+      response_headers:
+        X-Cache-Key: true
+        X-Cache-Status: true
+        age: true
+      storage_ttl: null
+      strategy: memory
+      vary_headers: null
+      vary_query_params: null
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: openid-connect
+    service: partialmapapi-1-0-0
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      anonymous: null
+      audience: null
+      audience_claim:
+        - aud
+      audience_required:
+        - forgeshift-wso2-forgecrux-carbon-super
+      auth_methods:
+        - bearer
+      authenticated_groups_claim: null
+      authorization_cookie_domain: null
+      authorization_cookie_http_only: true
+      authorization_cookie_name: authorization
+      authorization_cookie_path: /
+      authorization_cookie_same_site: Default
+      authorization_cookie_secure: null
+      authorization_endpoint: null
+      authorization_query_args_client: null
+      authorization_query_args_names: null
+      authorization_query_args_values: null
+      authorization_rolling_timeout: 600
+      bearer_token_cookie_name: null
+      bearer_token_header_name: null
+      bearer_token_param_type:
+        - header
+      by_username_ignore_case: false
+      cache_introspection: true
+      cache_token_exchange: true
+      cache_tokens: true
+      cache_tokens_salt: f4efce4004e5694249afad0d3cadda1d
+      cache_ttl: 3600
+      cache_ttl_max: null
+      cache_ttl_min: null
+      cache_ttl_neg: null
+      cache_ttl_resurrect: null
+      cache_user_info: true
+      claims_forbidden: null
+      client_alg: null
+      client_arg: client_id
+      client_auth: null
+      client_credentials_param_type:
+        - header
+        - query
+        - body
+      client_id: null
+      client_jwk: null
+      client_secret: "[REDACTED]"
+      cluster_cache_items:
+        - introspection
+      cluster_cache_redis:
+        cloud_authentication: null
+        cluster_addresses: null
+        cluster_max_redirections: 5
+        cluster_nodes: null
+        connect_timeout: 2000
+        connection_is_proxied: false
+        database: 0
+        host: 127.0.0.1
+        keepalive_backlog: null
+        keepalive_pool_size: 256
+        password: "[REDACTED]"
+        port: 6379
+        read_timeout: 2000
+        send_timeout: 2000
+        sentinel_addresses: null
+        sentinel_master: null
+        sentinel_nodes: null
+        sentinel_password: "[REDACTED]"
+        sentinel_role: null
+        sentinel_username: null
+        server_name: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      cluster_cache_strategy: off
+      consumer_by:
+        - custom_id
+      consumer_claim:
+        - wso2_application_id
+      consumer_claims:
+        - wso2_application_id
+      consumer_groups_claim: null
+      consumer_groups_optional: false
+      consumer_optional: false
+      credential_claim:
+        - sub
+      disable_session: null
+      discovery_headers_names: null
+      discovery_headers_values: null
+      display_errors: false
+      domains: null
+      downstream_access_token_header: null
+      downstream_access_token_jwk_header: null
+      downstream_headers: null
+      downstream_headers_claims: null
+      downstream_headers_names: null
+      downstream_id_token_header: null
+      downstream_id_token_jwk_header: null
+      downstream_introspection_header: null
+      downstream_introspection_jwt_header: null
+      downstream_refresh_token_header: null
+      downstream_session_id_header: null
+      downstream_user_info_header: null
+      downstream_user_info_jwt_header: null
+      dpop_proof_lifetime: 300
+      dpop_use_nonce: false
+      enable_hs_signatures: false
+      end_session_endpoint: null
+      expose_error_code: true
+      extra_jwks_uris: null
+      forbidden_destroy_session: true
+      forbidden_error_message: Forbidden
+      forbidden_redirect_uri: null
+      groups_claim:
+        - groups
+      groups_required: null
+      hide_credentials: false
+      http_proxy: null
+      http_proxy_authorization: null
+      http_version: 1.1
+      https_proxy: null
+      https_proxy_authorization: null
+      id_token_param_name: null
+      id_token_param_type:
+        - header
+        - query
+        - body
+      ignore_signature:
+        []
+      introspect_jwt_tokens: false
+      introspection_accept: application/json
+      introspection_check_active: true
+      introspection_endpoint: null
+      introspection_endpoint_auth_method: null
+      introspection_headers_client: null
+      introspection_headers_names: null
+      introspection_headers_values: null
+      introspection_hint: access_token
+      introspection_post_args_client: null
+      introspection_post_args_client_headers: null
+      introspection_post_args_names: null
+      introspection_post_args_values: null
+      introspection_token_param_name: token
+      issuer: https://2p50xopy1x82ealm.us.identity.konghq.com/auth
+      issuers_allowed: null
+      jwks_endpoint: null
+      jwt_session_claim: sid
+      jwt_session_cookie: null
+      keepalive: true
+      leeway: 0
+      login_action: upstream
+      login_methods:
+        - authorization_code
+      login_redirect_mode: fragment
+      login_redirect_uri: null
+      login_tokens:
+        - id_token
+      logout_methods:
+        - POST
+        - DELETE
+      logout_post_arg: null
+      logout_query_arg: null
+      logout_redirect_uri: null
+      logout_revoke: false
+      logout_revoke_access_token: "[REDACTED]"
+      logout_revoke_refresh_token: "[REDACTED]"
+      logout_uri_suffix: null
+      max_age: null
+      mtls_introspection_endpoint: null
+      mtls_revocation_endpoint: null
+      mtls_token_endpoint: null
+      no_proxy: null
+      password_param_type: "[REDACTED]"
+      preserve_query_args: false
+      principals:
+        directory: default
+        enabled: false
+        error_on_miss: true
+        match_consumer: true
+        match_consumer_groups: true
+        principal_by: null
+        principal_claim: null
+      proof_of_possession_auth_methods_validation: true
+      proof_of_possession_dpop: off
+      proof_of_possession_mtls: off
+      proof_of_possession_mtls_from_header: null
+      protected_resource_metadata: null
+      pushed_authorization_request_endpoint: null
+      pushed_authorization_request_endpoint_auth_method: null
+      redirect_uri: null
+      redis:
+        cloud_authentication: null
+        cluster_addresses: null
+        cluster_max_redirections: 5
+        cluster_nodes: null
+        connect_timeout: 2000
+        connection_is_proxied: false
+        database: 0
+        host: 127.0.0.1
+        keepalive_backlog: null
+        keepalive_pool_size: 256
+        password: "[REDACTED]"
+        port: 6379
+        prefix: null
+        read_timeout: 2000
+        send_timeout: 2000
+        sentinel_addresses: null
+        sentinel_master: null
+        sentinel_nodes: null
+        sentinel_password: "[REDACTED]"
+        sentinel_role: null
+        sentinel_username: null
+        server_name: null
+        socket: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      rediscovery_lifetime: 30
+      refresh_token_param_name: null
+      refresh_token_param_type:
+        - header
+        - query
+        - body
+      refresh_tokens: true
+      require_proof_key_for_code_exchange: null
+      require_pushed_authorization_requests: null
+      require_signed_request_object: null
+      resolve_distributed_claims: false
+      response_mode: query
+      response_type:
+        - code
+      reverify: false
+      revocation_endpoint: null
+      revocation_endpoint_auth_method: null
+      revocation_token_param_name: token
+      roles_claim:
+        - roles
+      roles_required: null
+      run_on_preflight: true
+      scopes:
+        - openid
+      scopes_claim:
+        - scope
+      scopes_required: null
+      search_user_info: false
+      session_absolute_timeout: 86400
+      session_audience: default
+      session_bind: null
+      session_cookie_domain: null
+      session_cookie_http_only: true
+      session_cookie_name: session
+      session_cookie_path: /
+      session_cookie_same_site: Lax
+      session_cookie_secure: null
+      session_enforce_same_subject: false
+      session_hash_storage_key: false
+      session_hash_subject: false
+      session_idling_timeout: 900
+      session_memcached_host: 127.0.0.1
+      session_memcached_port: 11211
+      session_memcached_prefix: null
+      session_memcached_socket: null
+      session_memcached_ssl: null
+      session_memcached_ssl_verify: false
+      session_redis_cluster_max_redirections: 5
+      session_redis_cluster_nodes: null
+      session_redis_connect_timeout: 2000
+      session_redis_host: 127.0.0.1
+      session_redis_password: "[REDACTED]"
+      session_redis_port: 6379
+      session_redis_prefix: null
+      session_redis_read_timeout: 2000
+      session_redis_send_timeout: 2000
+      session_redis_server_name: null
+      session_redis_socket: null
+      session_redis_ssl: false
+      session_redis_ssl_verify: false
+      session_redis_username: null
+      session_remember: false
+      session_remember_absolute_timeout: 2592000
+      session_remember_cookie_name: remember
+      session_remember_rolling_timeout: 604800
+      session_request_headers: null
+      session_response_headers: null
+      session_rolling_timeout: 3600
+      session_secret: "[REDACTED]"
+      session_storage: cookie
+      session_store_metadata: false
+      ssl_verify: false
+      timeout: 10000
+      tls_client_auth_cert_id: null
+      tls_client_auth_ssl_verify: true
+      token_cache_key_include_scope: false
+      token_endpoint: null
+      token_endpoint_auth_method: null
+      token_exchange: null
+      token_exchange_endpoint: null
+      token_headers_client: null
+      token_headers_grants: null
+      token_headers_names: null
+      token_headers_prefix: null
+      token_headers_replay: null
+      token_headers_values: null
+      token_post_args_client: null
+      token_post_args_names: null
+      token_post_args_values: null
+      unauthorized_destroy_session: true
+      unauthorized_error_message: Unauthorized
+      unauthorized_redirect_uri: null
+      unexpected_redirect_uri: null
+      upstream_access_token_header: authorization:bearer
+      upstream_access_token_jwk_header: null
+      upstream_headers: null
+      upstream_headers_claims: null
+      upstream_headers_names: null
+      upstream_id_token_header: null
+      upstream_id_token_jwk_header: null
+      upstream_introspection_header: null
+      upstream_introspection_jwt_header: null
+      upstream_refresh_token_header: null
+      upstream_session_id_header: null
+      upstream_user_info_header: null
+      upstream_user_info_jwt_header: null
+      userinfo_accept: application/json
+      userinfo_endpoint: null
+      userinfo_headers_client: null
+      userinfo_headers_names: null
+      userinfo_headers_values: null
+      userinfo_query_args_client: null
+      userinfo_query_args_names: null
+      userinfo_query_args_values: null
+      using_pseudo_issuer: false
+      verify_claims: true
+      verify_nonce: true
+      verify_parameters: false
+      verify_signature: true
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: pre-function
+    service: partialmapapi-1-0-0
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      access:
+        - "-- Apigee path rewrite (apigee-kong-migrator)\nlocal route        = kong.router.get_route()\nlocal service      = kong.router.get_service()\nlocal service_path = (service and service.path) or \"/\"\n-- Check for apigee-strip-len tag set on suffix routes during migration\nlocal strip_len = nil\nif route and route.tags then\n  for _, tag in ipairs(route.tags) do\n    if tag:sub(1, 17) == \"apigee-strip-len:\" then\n      strip_len = tonumber(tag:sub(18))\n      break\n    end\n  end\nend\n-- Fall back to route path length if no tag (covers normal routes)\nif not strip_len then\n  local route_path = (route and route.paths and route.paths[1]) or \"/\"\n  if route_path:sub(1, 1) == \"~\" then route_path = route_path:sub(2) end\n  strip_len = #route_path\nend\nlocal incoming = kong.request.get_path()\nlocal suffix = \"/\"\nif #incoming >= strip_len then\n  suffix = incoming:sub(strip_len + 1)\nend\nif suffix == \"\" then suffix = \"/\" end\nlocal clean_target = service_path:gsub(\"/+$\", \"\")\nif suffix:sub(1, 1) ~= \"/\" then suffix = \"/\" .. suffix end\nkong.service.request.set_path(clean_target .. suffix)\n"
+      body_filter:
+        []
+      certificate:
+        []
+      functions:
+        []
+      header_filter:
+        []
+      log:
+        []
+      rewrite:
+        []
+      ws_client_frame:
+        []
+      ws_close:
+        []
+      ws_handshake:
+        []
+      ws_upstream_frame:
+        []
+    tags:
+      - global
+      - apigee-path-rewrite
+  - name: rate-limiting
+    service: partialmapapi-1-0-0
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      custom_key: null
+      day: null
+      error_code: 429
+      error_message: API rate limit exceeded
+      fault_tolerant: true
+      header_name: null
+      hide_client_headers: false
+      hour: null
+      limit_by: consumer
+      minute: 5000
+      month: null
+      path: null
+      policy: local
+      redis:
+        cloud_authentication: null
+        database: 0
+        host: null
+        password: "[REDACTED]"
+        port: 6379
+        server_name: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      redis_database: 0
+      redis_host: null
+      redis_password: "[REDACTED]"
+      redis_port: 6379
+      redis_server_name: null
+      redis_ssl: false
+      redis_ssl_verify: false
+      redis_timeout: 2000
+      redis_username: null
+      second: null
+      sync_rate: -1
+      year: null
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-tier:Gold
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: request-transformer
+    route: banksuiteproduct-1-0-0--partialmapapi--getip
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      add:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      append:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      http_method: null
+      remove:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      rename:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      replace:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+        uri: /ip
+    tags:
+      - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-api-product:BankSuiteProduct
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: request-transformer
+    route: partialmapapi-1-0-0--getget
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      add:
+        body:
+          []
+        headers:
+          - X-Api-Tier:gold
+        querystring:
+          []
+      append:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      http_method: null
+      remove:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      rename:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      replace:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+        uri: /get
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: request-transformer
+    route: partialmapapi-1-0-0--getip
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      add:
+        body:
+          []
+        headers:
+          - X-Api-Tier:gold
+        querystring:
+          []
+      append:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      http_method: null
+      remove:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      rename:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+      replace:
+        body:
+          []
+        headers:
+          []
+        querystring:
+          []
+        uri: /ip
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: jwt
+    route: banksuiteproduct-1-0-0--partialmapapi--getip
+    enabled: false
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      anonymous: null
+      claims_to_verify: null
+      cookie_names:
+        []
+      header_names:
+        - authorization
+      key_claim_name: iss
+      maximum_expiration: 0
+      realm: null
+      run_on_preflight: true
+      secret_is_base64: "[REDACTED]"
+      uri_param_names:
+        - jwt
+    tags:
+      - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-api-product:BankSuiteProduct
+      - wso2-replaced-by:openid-connect
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: jwt
+    service: partialmapapi-1-0-0
+    enabled: false
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      anonymous: null
+      claims_to_verify: null
+      cookie_names:
+        []
+      header_names:
+        - authorization
+      key_claim_name: iss
+      maximum_expiration: 0
+      realm: null
+      run_on_preflight: true
+      secret_is_base64: "[REDACTED]"
+      uri_param_names:
+        - jwt
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-replaced-by:openid-connect
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: rate-limiting
+    route: banksuiteproduct-1-0-0--partialmapapi--getip
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      custom_key: null
+      day: null
+      error_code: 429
+      error_message: API rate limit exceeded
+      fault_tolerant: true
+      header_name: null
+      hide_client_headers: false
+      hour: null
+      limit_by: consumer
+      minute: 5000
+      month: null
+      path: null
+      policy: local
+      redis:
+        cloud_authentication: null
+        database: 0
+        host: null
+        password: "[REDACTED]"
+        port: 6379
+        server_name: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      redis_database: 0
+      redis_host: null
+      redis_password: "[REDACTED]"
+      redis_port: 6379
+      redis_server_name: null
+      redis_ssl: false
+      redis_ssl_verify: false
+      redis_timeout: 2000
+      redis_username: null
+      second: null
+      sync_rate: -1
+      year: null
+    tags:
+      - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-api-product:BankSuiteProduct
+      - wso2-tier:Gold
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: cors
+    service: partialmapapi-1-0-0
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      allow_origin_absent: true
+      credentials: false
+      exposed_headers:
+        - "*"
+      headers:
+        - authorization
+        - Content-Type
+        - apikey
+      max_age: null
+      methods:
+        - GET
+        - POST
+        - OPTIONS
+      origins:
+        - "*"
+      preflight_continue: false
+      private_network: false
+    tags:
+      - wso2-source-id:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - migrated-by:forgeshift-wso2-migrator
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: openid-connect
+    route: banksuiteproduct-1-0-0--partialmapapi--getip
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      anonymous: null
+      audience: null
+      audience_claim:
+        - aud
+      audience_required:
+        - forgeshift-wso2-forgecrux-carbon-super
+      auth_methods:
+        - bearer
+      authenticated_groups_claim: null
+      authorization_cookie_domain: null
+      authorization_cookie_http_only: true
+      authorization_cookie_name: authorization
+      authorization_cookie_path: /
+      authorization_cookie_same_site: Default
+      authorization_cookie_secure: null
+      authorization_endpoint: null
+      authorization_query_args_client: null
+      authorization_query_args_names: null
+      authorization_query_args_values: null
+      authorization_rolling_timeout: 600
+      bearer_token_cookie_name: null
+      bearer_token_header_name: null
+      bearer_token_param_type:
+        - header
+      by_username_ignore_case: false
+      cache_introspection: true
+      cache_token_exchange: true
+      cache_tokens: true
+      cache_tokens_salt: f4efce4004e5694249afad0d3cadda1d
+      cache_ttl: 3600
+      cache_ttl_max: null
+      cache_ttl_min: null
+      cache_ttl_neg: null
+      cache_ttl_resurrect: null
+      cache_user_info: true
+      claims_forbidden: null
+      client_alg: null
+      client_arg: client_id
+      client_auth: null
+      client_credentials_param_type:
+        - header
+        - query
+        - body
+      client_id: null
+      client_jwk: null
+      client_secret: "[REDACTED]"
+      cluster_cache_items:
+        - introspection
+      cluster_cache_redis:
+        cloud_authentication: null
+        cluster_addresses: null
+        cluster_max_redirections: 5
+        cluster_nodes: null
+        connect_timeout: 2000
+        connection_is_proxied: false
+        database: 0
+        host: 127.0.0.1
+        keepalive_backlog: null
+        keepalive_pool_size: 256
+        password: "[REDACTED]"
+        port: 6379
+        read_timeout: 2000
+        send_timeout: 2000
+        sentinel_addresses: null
+        sentinel_master: null
+        sentinel_nodes: null
+        sentinel_password: "[REDACTED]"
+        sentinel_role: null
+        sentinel_username: null
+        server_name: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      cluster_cache_strategy: off
+      consumer_by:
+        - custom_id
+      consumer_claim:
+        - wso2_application_id
+      consumer_claims:
+        - wso2_application_id
+      consumer_groups_claim: null
+      consumer_groups_optional: false
+      consumer_optional: false
+      credential_claim:
+        - sub
+      disable_session: null
+      discovery_headers_names: null
+      discovery_headers_values: null
+      display_errors: false
+      domains: null
+      downstream_access_token_header: null
+      downstream_access_token_jwk_header: null
+      downstream_headers: null
+      downstream_headers_claims: null
+      downstream_headers_names: null
+      downstream_id_token_header: null
+      downstream_id_token_jwk_header: null
+      downstream_introspection_header: null
+      downstream_introspection_jwt_header: null
+      downstream_refresh_token_header: null
+      downstream_session_id_header: null
+      downstream_user_info_header: null
+      downstream_user_info_jwt_header: null
+      dpop_proof_lifetime: 300
+      dpop_use_nonce: false
+      enable_hs_signatures: false
+      end_session_endpoint: null
+      expose_error_code: true
+      extra_jwks_uris: null
+      forbidden_destroy_session: true
+      forbidden_error_message: Forbidden
+      forbidden_redirect_uri: null
+      groups_claim:
+        - groups
+      groups_required: null
+      hide_credentials: false
+      http_proxy: null
+      http_proxy_authorization: null
+      http_version: 1.1
+      https_proxy: null
+      https_proxy_authorization: null
+      id_token_param_name: null
+      id_token_param_type:
+        - header
+        - query
+        - body
+      ignore_signature:
+        []
+      introspect_jwt_tokens: false
+      introspection_accept: application/json
+      introspection_check_active: true
+      introspection_endpoint: null
+      introspection_endpoint_auth_method: null
+      introspection_headers_client: null
+      introspection_headers_names: null
+      introspection_headers_values: null
+      introspection_hint: access_token
+      introspection_post_args_client: null
+      introspection_post_args_client_headers: null
+      introspection_post_args_names: null
+      introspection_post_args_values: null
+      introspection_token_param_name: token
+      issuer: https://2p50xopy1x82ealm.us.identity.konghq.com/auth
+      issuers_allowed: null
+      jwks_endpoint: null
+      jwt_session_claim: sid
+      jwt_session_cookie: null
+      keepalive: true
+      leeway: 0
+      login_action: upstream
+      login_methods:
+        - authorization_code
+      login_redirect_mode: fragment
+      login_redirect_uri: null
+      login_tokens:
+        - id_token
+      logout_methods:
+        - POST
+        - DELETE
+      logout_post_arg: null
+      logout_query_arg: null
+      logout_redirect_uri: null
+      logout_revoke: false
+      logout_revoke_access_token: "[REDACTED]"
+      logout_revoke_refresh_token: "[REDACTED]"
+      logout_uri_suffix: null
+      max_age: null
+      mtls_introspection_endpoint: null
+      mtls_revocation_endpoint: null
+      mtls_token_endpoint: null
+      no_proxy: null
+      password_param_type: "[REDACTED]"
+      preserve_query_args: false
+      principals:
+        directory: default
+        enabled: false
+        error_on_miss: true
+        match_consumer: true
+        match_consumer_groups: true
+        principal_by: null
+        principal_claim: null
+      proof_of_possession_auth_methods_validation: true
+      proof_of_possession_dpop: off
+      proof_of_possession_mtls: off
+      proof_of_possession_mtls_from_header: null
+      protected_resource_metadata: null
+      pushed_authorization_request_endpoint: null
+      pushed_authorization_request_endpoint_auth_method: null
+      redirect_uri: null
+      redis:
+        cloud_authentication: null
+        cluster_addresses: null
+        cluster_max_redirections: 5
+        cluster_nodes: null
+        connect_timeout: 2000
+        connection_is_proxied: false
+        database: 0
+        host: 127.0.0.1
+        keepalive_backlog: null
+        keepalive_pool_size: 256
+        password: "[REDACTED]"
+        port: 6379
+        prefix: null
+        read_timeout: 2000
+        send_timeout: 2000
+        sentinel_addresses: null
+        sentinel_master: null
+        sentinel_nodes: null
+        sentinel_password: "[REDACTED]"
+        sentinel_role: null
+        sentinel_username: null
+        server_name: null
+        socket: null
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+        username: null
+      rediscovery_lifetime: 30
+      refresh_token_param_name: null
+      refresh_token_param_type:
+        - header
+        - query
+        - body
+      refresh_tokens: true
+      require_proof_key_for_code_exchange: null
+      require_pushed_authorization_requests: null
+      require_signed_request_object: null
+      resolve_distributed_claims: false
+      response_mode: query
+      response_type:
+        - code
+      reverify: false
+      revocation_endpoint: null
+      revocation_endpoint_auth_method: null
+      revocation_token_param_name: token
+      roles_claim:
+        - roles
+      roles_required: null
+      run_on_preflight: true
+      scopes:
+        - openid
+      scopes_claim:
+        - scope
+      scopes_required: null
+      search_user_info: false
+      session_absolute_timeout: 86400
+      session_audience: default
+      session_bind: null
+      session_cookie_domain: null
+      session_cookie_http_only: true
+      session_cookie_name: session
+      session_cookie_path: /
+      session_cookie_same_site: Lax
+      session_cookie_secure: null
+      session_enforce_same_subject: false
+      session_hash_storage_key: false
+      session_hash_subject: false
+      session_idling_timeout: 900
+      session_memcached_host: 127.0.0.1
+      session_memcached_port: 11211
+      session_memcached_prefix: null
+      session_memcached_socket: null
+      session_memcached_ssl: null
+      session_memcached_ssl_verify: false
+      session_redis_cluster_max_redirections: 5
+      session_redis_cluster_nodes: null
+      session_redis_connect_timeout: 2000
+      session_redis_host: 127.0.0.1
+      session_redis_password: "[REDACTED]"
+      session_redis_port: 6379
+      session_redis_prefix: null
+      session_redis_read_timeout: 2000
+      session_redis_send_timeout: 2000
+      session_redis_server_name: null
+      session_redis_socket: null
+      session_redis_ssl: false
+      session_redis_ssl_verify: false
+      session_redis_username: null
+      session_remember: false
+      session_remember_absolute_timeout: 2592000
+      session_remember_cookie_name: remember
+      session_remember_rolling_timeout: 604800
+      session_request_headers: null
+      session_response_headers: null
+      session_rolling_timeout: 3600
+      session_secret: "[REDACTED]"
+      session_storage: cookie
+      session_store_metadata: false
+      ssl_verify: false
+      timeout: 10000
+      tls_client_auth_cert_id: null
+      tls_client_auth_ssl_verify: true
+      token_cache_key_include_scope: false
+      token_endpoint: null
+      token_endpoint_auth_method: null
+      token_exchange: null
+      token_exchange_endpoint: null
+      token_headers_client: null
+      token_headers_grants: null
+      token_headers_names: null
+      token_headers_prefix: null
+      token_headers_replay: null
+      token_headers_values: null
+      token_post_args_client: null
+      token_post_args_names: null
+      token_post_args_values: null
+      unauthorized_destroy_session: true
+      unauthorized_error_message: Unauthorized
+      unauthorized_redirect_uri: null
+      unexpected_redirect_uri: null
+      upstream_access_token_header: authorization:bearer
+      upstream_access_token_jwk_header: null
+      upstream_headers: null
+      upstream_headers_claims: null
+      upstream_headers_names: null
+      upstream_id_token_header: null
+      upstream_id_token_jwk_header: null
+      upstream_introspection_header: null
+      upstream_introspection_jwt_header: null
+      upstream_refresh_token_header: null
+      upstream_session_id_header: null
+      upstream_user_info_header: null
+      upstream_user_info_jwt_header: null
+      userinfo_accept: application/json
+      userinfo_endpoint: null
+      userinfo_headers_client: null
+      userinfo_headers_names: null
+      userinfo_headers_values: null
+      userinfo_query_args_client: null
+      userinfo_query_args_names: null
+      userinfo_query_args_values: null
+      using_pseudo_issuer: false
+      verify_claims: true
+      verify_nonce: true
+      verify_parameters: false
+      verify_signature: true
+    tags:
+      - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-api-product:BankSuiteProduct
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+  - name: acl
+    route: banksuiteproduct-1-0-0--partialmapapi--getip
+    enabled: true
+    protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+    config:
+      allow:
+        - wso2-api:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      allow_when: null
+      always_use_authenticated_groups: false
+      deny: null
+      deny_when: null
+      hide_groups_header: true
+      include_consumer_groups: false
+    tags:
+      - wso2-source-id:a85cee5c-c638-4fb5-9f78-fe8c83f59121
+      - migrated-by:forgeshift-wso2-migrator
+      - wso2-api-product:BankSuiteProduct
+      - wso2-member-api:e2bc7f53-c332-407a-8f81-c545f81c9832
+      - wso2-resource:_ip
+      - wso2-verb:GET
+      - proxyx-proxy-id:PX-9ED22B40FF8E
+
+########################################################
+# UPSTREAMS + TARGETS
+########################################################
+
+upstreams:
+  []
