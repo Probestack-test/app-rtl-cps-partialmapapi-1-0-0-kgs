@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: partialmapapi-1-0-0
+  version: 1.0.0
+  description: Operational baseline generated from observed Kong Konnect configuration.
+servers:
+- url: https://postman-echo.com
+paths:
+  /partial/1.0.0/get:
+    get:
+      operationId: getPartial100Get_36706b12
+      summary: partialmapapi-1-0-0--getget
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - b833f41f-01cf-4e21-b80d-cce39b44b5c5
+      x-kong-plugin-summary:
+      - cors
+      - jwt
+      - openid-connect
+      - proxy-cache
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+    options:
+      operationId: optionsPartial100Get_0c082500
+      summary: partialmapapi-1-0-0--getget
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - b833f41f-01cf-4e21-b80d-cce39b44b5c5
+      x-kong-plugin-summary:
+      - cors
+      - jwt
+      - openid-connect
+      - proxy-cache
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+  /partial/1.0.0/ip:
+    get:
+      operationId: getPartial100Ip_959d4738
+      summary: partialmapapi-1-0-0--getip
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - b822c58e-f35f-481d-9c0f-b5ba3b639817
+      x-kong-plugin-summary:
+      - cors
+      - jwt
+      - openid-connect
+      - proxy-cache
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+    options:
+      operationId: optionsPartial100Ip_bdf92883
+      summary: partialmapapi-1-0-0--getip
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - b822c58e-f35f-481d-9c0f-b5ba3b639817
+      x-kong-plugin-summary:
+      - cors
+      - jwt
+      - openid-connect
+      - proxy-cache
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+  /suite/ip:
+    get:
+      operationId: getSuiteIp_d265a252
+      summary: banksuiteproduct-1-0-0--partialmapapi--getip
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - 812b5797-091a-48e7-9a8b-615cf9562a54
+      x-kong-plugin-summary:
+      - acl
+      - cors
+      - jwt
+      - openid-connect
+      - proxy-cache
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+x-kong-source:
+  serviceId: 25333e2e-0c41-4a91-b623-f59dbe872a22
+  snapshotFingerprint: 070e5f310671cfa6fe84923088fc2585de20ba94986fcb914cbcd2e45037aa21
+  controlPlaneId: edb363b5-777a-445c-a190-5ca0d53c0c12
+x-kong-unmapped-routes: []
