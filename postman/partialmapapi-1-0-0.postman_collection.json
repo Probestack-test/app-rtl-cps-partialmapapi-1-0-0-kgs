@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "partialmapapi-1-0-0 Postman Collection",
+    "description": "Operational baseline generated from observed Kong Konnect configuration.\n\nOpenAPI version: 3.0.3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://postman-echo.com",
+      "type": "string",
+      "description": "Override with the base URL of the deployed Kong gateway."
+    }
+  ],
+  "item": [
+    {
+      "name": "partialmapapi-1-0-0--getget",
+      "request": {
+        "method": "GET",
+        "description": "partialmapapi-1-0-0--getget\n\nResponses:\n- default: Runtime response semantics are not observable from Kong configuration.",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/partial/1.0.0/get",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "partial",
+            "1.0.0",
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "partialmapapi-1-0-0--getget",
+      "request": {
+        "method": "OPTIONS",
+        "description": "partialmapapi-1-0-0--getget\n\nResponses:\n- default: Runtime response semantics are not observable from Kong configuration.",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/partial/1.0.0/get",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "partial",
+            "1.0.0",
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "partialmapapi-1-0-0--getip",
+      "request": {
+        "method": "GET",
+        "description": "partialmapapi-1-0-0--getip\n\nResponses:\n- default: Runtime response semantics are not observable from Kong configuration.",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/partial/1.0.0/ip",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "partial",
+            "1.0.0",
+            "ip"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "partialmapapi-1-0-0--getip",
+      "request": {
+        "method": "OPTIONS",
+        "description": "partialmapapi-1-0-0--getip\n\nResponses:\n- default: Runtime response semantics are not observable from Kong configuration.",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/partial/1.0.0/ip",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "partial",
+            "1.0.0",
+            "ip"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "banksuiteproduct-1-0-0--partialmapapi--getip",
+      "request": {
+        "method": "GET",
+        "description": "banksuiteproduct-1-0-0--partialmapapi--getip\n\nResponses:\n- default: Runtime response semantics are not observable from Kong configuration.",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/suite/ip",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "suite",
+            "ip"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
